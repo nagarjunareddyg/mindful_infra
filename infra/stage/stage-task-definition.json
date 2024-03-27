@@ -1,0 +1,276 @@
+{
+   "containerDefinitions": [
+       {
+           "image": "560668774271.dkr.ecr.us-east-1.amazonaws.com/mindful-stage:latest",
+           "portMappings": [
+               {
+                   "containerPort": 4000,
+                   "hostPort": 4000,
+                   "protocol": "tcp"
+               }
+           ],
+           "essential": true,
+           "entryPoint": [
+               "bin/mindful"
+           ],
+           "command": [
+               "start"
+           ],
+           "environment": [
+               {
+                   "name": "ACTIVE_CAMPAIGN_STATE_CUSTOM_FIELD_ID",
+                   "value": "2"
+               },
+               {
+                   "name": "DRCHRONO_API_URL",
+                   "value": "https://drchrono.com"
+               },
+               {
+                   "name": "DRCHRONO_APP_URL",
+                   "value": "https://app.drchrono.com"
+               },
+               {
+                   "name": "ACTIVE_CAMPAIGN_PATIENT_DRCHRONO_URL_CUSTOM_FIELD_ID",
+                   "value": "4"
+               },
+               {
+                   "name": "S3_BUCKET_URL_HEAD",
+                   "value": "https://s3.amazonaws.com/file.mindful.care.stage"
+               },
+               {
+                   "name": "MODIO_SFTP_HOST_PORT",
+                   "value": "2022"
+               },
+               {
+                   "name": "MAILGUN_DOMAIN",
+                   "value": "mg.mindful.care"
+               },
+               {
+                   "name": "S3_BUCKET_NAME",
+                   "value": "file.mindful.care.stage"
+               },
+               {
+                   "name": "ACTIVE_CAMPAIGN_INTAKE_FORM_DOWNLOAD_URL_CUSTOM_FIELD_ID",
+                   "value": "3"
+               },
+               {
+                   "name": "MODIO_SFTP_HOST_URL",
+                   "value": "sftp.modiohealth.com"
+               },
+               {
+                   "name": "GOOGLE_ANALYTICS_MEASUREMENT_ID",
+                   "value": "G-YNN5191K8B"
+               },
+               {
+                   "name": "HOST_ENDPOINT",
+                   "value": "testaws.mindful.care"
+               },
+               {
+                   "name": "DRCHRONO_ENV_APP_URL",
+                   "value": "https://mindfulcarestage.drchrono.com"
+               },
+               {
+                   "name": "HOST_URL",
+                   "value": "https://testaws.mindful.care"
+               },
+               {
+                   "name": "SENTRY_ENV_NAME",
+                   "value": "stage"
+               }
+           ],
+           "mountPoints": [
+               {
+                   "sourceVolume": "mc-stage-app-fs",
+                   "containerPath": "/app"
+               }
+           ],
+           "secrets": [
+               {
+                   "name": "DB_URL",
+                   "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/DB_URL"
+               },
+               {
+                   "name": "SECRET_KEY_BASE",
+                   "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/SECRET_KEY_BASE"
+               },
+               {
+                   "name": "JOTFORM_API_KEY",
+                   "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/STAGE_JOTFORM_API_KEY"
+               },
+               {
+                   "name": "GOOGLE_MAPS_API_KEY",
+                   "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/STAGE_GOOGLE_MAPS_API_KEY"
+               },
+               {
+                   "name": "GOOGLE_MY_BUSINESS_ACCOUNT_ID",
+                   "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/STAGE_GOOGLE_MY_BUSINESS_ACCOUNT_ID"
+               },
+               {
+                   "name": "GOOGLE_MY_BUSINESS_CLIENT_ID",
+                   "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/STAGE_GOOGLE_MY_BUSINESS_CLIENT_ID"
+               },
+               {
+                   "name": "GOOGLE_ANALYTICS_API_SECRET",
+                   "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/STAGE_GOOGLE_ANALYTICS_API_SECRET"
+               },
+               {
+                   "name": "MAILGUN_API_KEY",
+                   "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/STAGE_MAILGUN_API_KEY"
+               },
+               {
+                   "name": "DRCHRONO_CLIENT_ID",
+                   "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/STAGE_DRCHRONO_CLIENT_ID"
+               },
+               {
+                   "name": "DRCHRONO_CLIENT_SECRET",
+                   "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/STAGE_DRCHRONO_CLIENT_SECRET"
+               },
+               {
+                   "name": "DRCHRONO_WEBHOOK_SECRET",
+                   "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/STAGE_DRCHRONO_WEBHOOK_SECRET"
+               },
+               {
+                   "name": "DRCHRONO_EMAIL",
+                   "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/STAGE_DRCHRONO_EMAIL"
+               },
+               {
+                   "name": "DRCHRONO_ID",
+                   "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/STAGE_DRCHRONO_ID"
+               },
+               {
+                   "name": "DRCHRONO_DOCTOR_ID",
+                   "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/STAGE_DRCHRONO_DOCTOR_ID"
+               },
+               {
+                   "name": "JAZZHR_API_KEY",
+                   "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/STAGE_JAZZHR_API_KEY"
+               },
+               {
+                   "name": "PVERIFY_CLIENT_ID",
+                   "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/STAGE_PVERIFY_CLIENT_ID"
+               },
+               {
+                   "name": "PVERIFY_CLIENT_SECRET",
+                   "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/STAGE_PVERIFY_CLIENT_SECRET"
+               },
+               {
+                   "name": "HELP_SCOUT_APP_ID",
+                   "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/STAGE_HELP_SCOUT_APP_ID"
+               },
+               {
+                   "name": "HELP_SCOUT_APP_SECRET",
+                   "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/STAGE_HELP_SCOUT_APP_SECRET"
+               },
+               {
+                   "name": "ACTIVE_CAMPAIGN_API_URL",
+                   "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/STAGE_ACTIVE_CAMPAIGN_API_URL"
+               },
+               {
+                   "name": "ACTIVE_CAMPAIGN_KEY",
+                   "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/STAGE_ACTIVE_CAMPAIGN_KEY"
+               },
+               {
+                   "name": "DAILY_CO_API_KEY",
+                   "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/STAGE_DAILY_CO_API_KEY"
+               },
+               {
+                   "name": "TWILIO_ACCOUNT_SID",
+                   "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/STAGE_TWILIO_ACCOUNT_SID"
+               },
+               {
+                   "name": "TWILIO_AUTH_TOKEN",
+                   "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/STAGE_TWILIO_AUTH_TOKEN"
+               },
+               {
+                   "name": "TWILIO_FROM_PHONE_NUMBER",
+                   "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/STAGE_TWILIO_FROM_PHONE_NUMBER"
+               },
+               {
+                   "name": "MICROSOFT_TENANT_ID",
+                   "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/STAGE_MICROSOFT_TENANT_ID"
+               },
+               {
+                   "name": "MICROSOFT_CLIENT_ID",
+                   "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/STAGE_MICROSOFT_CLIENT_ID"
+               },
+               {
+                   "name": "MODIO_SFTP_USER",
+                   "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/STAGE_MODIO_SFTP_USER"
+               },
+               {
+                   "name": "MODIO_SFTP_PASSWORD",
+                   "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/STAGE_MODIO_SFTP_PASSWORD"
+               },
+               {
+                   "name": "AWS_ACCESS_KEY_ID",
+                   "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/STAGE_AWS_ACCESS_KEY_ID"
+               },
+               {
+                   "name": "AWS_SECRET_ACCESS_KEY",
+                   "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/STAGE_AWS_SECRET_ACCESS_KEY"
+               }
+           ],
+           "logConfiguration": {
+               "logDriver": "awslogs",
+               "options": {
+                   "awslogs-group": "awslogs-mc-stage-app",
+                   "awslogs-region": "us-east-1",
+                   "awslogs-stream-prefix": "awslogs-mc-stage-app"
+               }
+           }
+       }
+   ],
+   "family": "mc-stage-app",
+   "taskRoleArn": "arn:aws:iam::560668774271:role/mc-stage-ecs-task-role",
+   "executionRoleArn": "arn:aws:iam::560668774271:role/mc-stage-ecs-task-execution-role",
+   "networkMode": "awsvpc",
+   "volumes": [
+       {
+           "name": "mc-stage-app-fs"
+       }
+   ],
+   "status": "ACTIVE",
+   "requiresAttributes": [
+       {
+           "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
+       },
+       {
+           "name": "ecs.capability.execution-role-awslogs"
+       },
+       {
+           "name": "com.amazonaws.ecs.capability.ecr-auth"
+       },
+       {
+           "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+       },
+       {
+           "name": "com.amazonaws.ecs.capability.task-iam-role"
+       },
+       {
+           "name": "ecs.capability.execution-role-ecr-pull"
+       },
+       {
+           "name": "ecs.capability.secrets.ssm.environment-variables"
+       },
+       {
+           "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+       },
+       {
+           "name": "ecs.capability.task-eni"
+       }
+   ],
+   "placementConstraints": [],
+   "compatibilities": [
+       "EC2",
+       "FARGATE"
+   ],
+   "requiresCompatibilities": [
+       "FARGATE"
+   ],
+   "cpu": "1024",
+   "memory": "2048",
+   "runtimePlatform": {
+       "cpuArchitecture": "ARM64",
+       "operatingSystemFamily": "LINUX"
+   }
+}

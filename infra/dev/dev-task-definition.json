@@ -1,0 +1,323 @@
+{
+    "containerDefinitions": [
+        {
+            "name": "mc-develop-app",
+            "image": "560668774271.dkr.ecr.us-east-1.amazonaws.com/mindful-develop:latest",
+            "cpu": 0,
+            "portMappings": [
+                {
+                    "containerPort": 8080,
+                    "hostPort": 8080,
+                    "protocol": "tcp"
+                }
+            ],
+            "essential": true,
+            "entryPoint": [
+                "bin/mindful"
+            ],
+            "command": [
+                "start"
+            ],
+            "environment": [
+                {
+                    "name": "S3_BUCKET_URL_HEAD",
+                    "value": "https://s3.amazonaws.com/file.mindful.care.dev"
+                },
+                {
+                    "name": "S3_BUCKET_NAME",
+                    "value": "file.mindful.care.dev"
+                },
+                {
+                    "name": "GOOGLE_ANALYTICS_MEASUREMENT_ID",
+                    "value": "G-YNN5191K8B"
+                },
+                {
+                    "name": "HOST_ENDPOINT",
+                    "value": "dev.mindful.care"
+                },
+                {
+                    "name": "HOST_URL",
+                    "value": "https://dev.mindful.care"
+                },
+                {
+                    "name": "SENTRY_ENV_NAME",
+                    "value": "dev"
+                },
+                {
+                    "name": "MAILGUN_DOMAIN",
+                    "value": "mg.mindful.care"
+                },
+                {
+                    "name": "DRCHRONO_API_URL",
+                    "value": "https://drchrono.com"
+                },
+                {
+                    "name": "DRCHRONO_APP_URL",
+                    "value": "https://app.drchrono.com"
+                },
+                {
+                    "name": "DRCHRONO_ENV_APP_URL",
+                    "value": "https://mindfulcaredev.drchrono.com"
+                },
+                {
+                    "name": "ACTIVE_CAMPAIGN_API_URL",
+                    "value": "https://mindfulcare1657215173.api-us1.com/api/3"
+                },
+                {
+                    "name": "ACTIVE_CAMPAIGN_STATE_CUSTOM_FIELD_ID",
+                    "value": "2"
+                },
+                {
+                    "name": "ACTIVE_CAMPAIGN_INTAKE_FORM_DOWNLOAD_URL_CUSTOM_FIELD_ID",
+                    "value": "3"
+                },
+                {
+                    "name": "ACTIVE_CAMPAIGN_PATIENT_DRCHRONO_URL_CUSTOM_FIELD_ID",
+                    "value": "4"
+                },
+                {
+                    "name": "MODIO_SFTP_HOST_URL",
+                    "value": "sftp-modio.prod.platform.aws.chgit.com"
+                },
+                {
+                    "name": "MODIO_SFTP_HOST_PORT",
+                    "value": "22"
+                }
+
+            ],
+            "secrets": [
+                {
+                    "name": "DATABASE_URL",
+                    "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/DEV_DB_URL"
+                },
+                {
+                    "name": "SECRET_KEY_BASE",
+                    "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/SECRET_KEY_BASE"
+                },
+                {
+                    "name": "GOOGLE_MAPS_API_KEY",
+                    "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/DEV_GOOGLE_MAPS_API_KEY"
+                },
+                {
+                    "name": "GOOGLE_MY_BUSINESS_ACCOUNT_ID",
+                    "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/DEV_GOOGLE_MY_BUSINESS_ACCOUNT_ID"
+                },
+                {
+                    "name": "GOOGLE_MY_BUSINESS_CLIENT_ID",
+                    "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/DEV_GOOGLE_MY_BUSINESS_CLIENT_ID"
+                },
+                {
+                    "name": "GOOGLE_ANALYTICS_API_SECRET",
+                    "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/DEV_GOOGLE_ANALYTICS_API_SECRET"
+                },
+                {
+                    "name": "MAILGUN_API_KEY",
+                    "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/DEV_MAILGUN_API_KEY"
+                },
+                {
+                    "name": "DRCHRONO_CLIENT_ID",
+                    "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/DEV_DRCHRONO_CLIENT_ID"
+                },
+                {
+                    "name": "DRCHRONO_CLIENT_SECRET",
+                    "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/DEV_DRCHRONO_CLIENT_SECRET"
+                },
+                {
+                    "name": "DRCHRONO_WEBHOOK_SECRET",
+                    "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/DEV_DRCHRONO_WEBHOOK_SECRET"
+                },
+                {
+                    "name": "DRCHRONO_EMAIL",
+                    "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/DEV_DRCHRONO_EMAIL"
+                },
+                {
+                    "name": "DRCHRONO_ID",
+                    "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/DEV_DRCHRONO_ID"
+                },
+                {
+                    "name": "DRCHRONO_DOCTOR_ID",
+                    "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/DEV_DRCHRONO_DOCTOR_ID"
+                },
+                {
+                    "name": "JAZZHR_API_KEY",
+                    "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/DEV_JAZZHR_API_KEY"
+                },
+                {
+                    "name": "PVERIFY_CLIENT_ID",
+                    "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/DEV_PVERIFY_CLIENT_ID"
+                },
+                {
+                    "name": "PVERIFY_CLIENT_SECRET",
+                    "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/DEV_PVERIFY_CLIENT_SECRET"
+                },
+                {
+                    "name": "HELP_SCOUT_APP_ID",
+                    "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/DEV_HELP_SCOUT_APP_ID"
+                },
+                {
+                    "name": "HELP_SCOUT_APP_SECRET",
+                    "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/DEV_HELP_SCOUT_APP_SECRET"
+                },
+                {
+                    "name": "ACTIVE_CAMPAIGN_KEY",
+                    "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/DEV_ACTIVE_CAMPAIGN_KEY"
+                },
+                {
+                    "name": "DAILY_CO_API_KEY",
+                    "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/DEV_DAILY_CO_API_KEY"
+                },
+                {
+                    "name": "TWILIO_ACCOUNT_SID",
+                    "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/DEV_TWILIO_ACCOUNT_SID"
+                },
+                {
+                    "name": "TWILIO_AUTH_TOKEN",
+                    "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/DEV_TWILIO_AUTH_TOKEN"
+                },
+                {
+                    "name": "TWILIO_FROM_PHONE_NUMBER",
+                    "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/DEV_TWILIO_FROM_PHONE_NUMBER"
+                },
+                {
+                    "name": "MICROSOFT_TENANT_ID",
+                    "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/DEV_MICROSOFT_TENANT_ID"
+                },
+                {
+                    "name": "MICROSOFT_CLIENT_ID",
+                    "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/DEV_MICROSOFT_CLIENT_ID"
+                },
+                {
+                    "name": "MODIO_SFTP_USER",
+                    "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/DEV_MODIO_SFTP_USER"
+                },
+                {
+                    "name": "MODIO_SFTP_PASSWORD",
+                    "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/DEV_MODIO_SFTP_PASSWORD"
+                },
+                {
+                    "name": "AWS_ACCESS_KEY_ID",
+                    "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/DEV_AWS_ACCESS_KEY_ID"
+                },
+                {
+                    "name": "AWS_SECRET_ACCESS_KEY",
+                    "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/DEV_AWS_SECRET_ACCESS_KEY"
+                },
+                {
+                    "name": "STRIPE_SECRET_KEY",
+                    "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/STRIPE_SECRET_KEY"
+                },
+                {
+                    "name": "STRIPE_PUBLISHABLE_KEY",
+                    "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/STRIPE_PUBLISHABLE_KEY"
+                }
+            ],
+            "mountPoints": [
+                {
+                    "sourceVolume": "mc-develop-app-fs",
+                    "containerPath": "/app"
+                }
+            ],
+            "volumesFrom": [],
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "mindfulcare-app",
+                    "awslogs-region": "us-east-1",
+                    "awslogs-stream-prefix": "mc-develop-app"
+                }
+            }
+        },
+        {
+            "name": "mc-develop-elastic-agent",
+            "essential": false,
+            "image": "docker.elastic.co/beats/elastic-agent:8.9.0",
+            "portMappings": [
+                {
+                    "containerPort": 443,
+                    "hostPort": 443,
+                    "protocol": "tcp"
+                }
+            ],
+            "environment": [
+                {
+                    "name": "FLEET_ENROLL",
+                    "value": "1"
+                },
+                {
+                    "name": "FLEET_INSECURE",
+                    "value": "true"
+                }
+            ],
+            "secrets": [
+                {
+                    "name": "FLEET_URL",
+                    "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/DEV_FLEET_URL"
+                },
+                {
+                    "name": "FLEET_ENROLLMENT_TOKEN",
+                    "valueFrom": "arn:aws:ssm:us-east-1:560668774271:parameter/DEV_FLEET_ENROLLMENT_TOKEN"
+                }
+            ],
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "mindfulcare-app",
+                    "awslogs-region": "us-east-1",
+                    "awslogs-stream-prefix": "mc-develop-elastic"
+                }
+            }
+        }
+    ],
+    "family": "app-service",
+    "taskRoleArn": "arn:aws:iam::560668774271:role/mc-develop-ecs-task-role",
+    "executionRoleArn": "arn:aws:iam::560668774271:role/mc-develop-ecs-task-execution-role",
+    "networkMode": "awsvpc",
+    "volumes": [
+        {
+            "name": "mc-develop-app-fs",
+            "host": {}
+        }
+    ],
+    "status": "ACTIVE",
+    "requiresAttributes": [
+        {
+            "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
+        },
+        {
+            "name": "ecs.capability.execution-role-awslogs"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.ecr-auth"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.task-iam-role"
+        },
+        {
+            "name": "ecs.capability.execution-role-ecr-pull"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+        },
+        {
+            "name": "ecs.capability.task-eni"
+        }
+    ],
+    "placementConstraints": [],
+    "compatibilities": [
+        "EC2",
+        "FARGATE"
+    ],
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "cpu": "1024",
+    "memory": "2048",
+    "runtimePlatform": {
+        "cpuArchitecture": "ARM64",
+        "operatingSystemFamily": "LINUX"
+    },
+    "tags": []
+}
