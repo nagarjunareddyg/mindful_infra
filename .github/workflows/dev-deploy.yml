@@ -1,5 +1,5 @@
-#For the provider URL: Use https://token.actions.githubusercontent.com
-#For the "Audience": Use sts.amazonaws.com 
+##For the provider URL: Use https://token.actions.githubusercontent.com
+##For the "Audience": Use sts.amazonaws.com 
 name: "Mindful Care Infra - Dev Terraform Workflow"
 
 permissions:
