@@ -1,0 +1,83 @@
+#For the provider URL: Use https://token.actions.githubusercontent.com
+#For the "Audience": Use sts.amazonaws.com 
+name: "Mindful Care Infra - Dev Terraform Workflow"
+
+permissions:
+  id-token: write
+  contents: read
+
+on:
+  push:
+    paths:
+      - 'infra/dev/**'
+    branches:
+      - develop
+
+env:
+  AWS_DEFAULT_REGION: us-east-1
+
+jobs:
+  checkov_security_scan:
+    name: 'Security Scan with Checkov'
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Setup Python 3.10
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Install & Run Checkov
+      run: |
+        pip install checkov
+        checkov -d .
+      continue-on-error: true
+
+    # This message is optional and can be uncommented if desired
+    # - name: Scan Completion Message
+    #   run: echo "Scan complete! Onward to infrastructure as code greatness! 🖖🏻"
+
+  terraform_workflow:
+    needs: checkov_security_scan
+    name: "Terraform: Init, Validate, Plan, Apply"
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        role-to-assume: arn:aws:iam::728459284773:role/Github_Actions_Infra_test
+        aws-region: us-east-1
+
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v2
+
+    - name: Terraform Init
+      run: |
+        cd infra/dev
+        terraform init -backend-config="bucket=mc-dev-terraform-state" \
+                      -backend-config="region=us-east-1" \
+                      -backend-config="dynamodb_table=mc-dev-tf-statelock" \
+                      -backend-config="key=mc-dev-terraform.tfstate"
+
+    - name: Terraform Validate
+      run: terraform validate
+
+    - name: Terraform Plan
+      run: |
+        cd infra/dev
+        terraform plan -lock=false -var-file=dev.tfvars -no-color -out=tfplan
+
+    - name: Apply Terraform Changes
+      run: |
+        cd infra/dev
+        terraform apply -lock=false -auto-approve -var-file=dev.tfvars
+
+    - name: Deployment Completion Message
+      run: echo "Deployment unlocked! The matrix has been updated with our latest blueprints🔵🖨️"
