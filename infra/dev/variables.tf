@@ -1,4 +1,4 @@
-##### VPC VARIABLES ########
+##### VPC VARIABLES #####
 
 variable "region" {
   default = ""
