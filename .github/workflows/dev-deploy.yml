@@ -64,7 +64,7 @@ jobs:
         terraform init -backend-config="mc-test-dev-terraform-state" \
                       -backend-config="region=us-east-1" \
                       -backend-config="dynamodb_table=mc-dev-tf-statelock" \
-                      -backend-config="key=mc-dev-terraform.tfstate"
+                      -backend-config="key=mc-test-dev-terraform.tfstate"
 
     - name: Terraform Validate
       run: terraform validate
