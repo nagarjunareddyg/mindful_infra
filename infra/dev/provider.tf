@@ -6,7 +6,7 @@ terraform {
     }
   }
   backend "s3" {
-    bucket = "mc-dev-terraform-state"
+    bucket = "mc-test-dev-terraform-state"
     key    = "mc-dev-terraform.tfstate"
     dynamodb_table = "mc-dev-tf-statelock"
     region = "us-east-1"
