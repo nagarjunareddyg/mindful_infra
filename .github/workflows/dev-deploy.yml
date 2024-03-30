@@ -11,7 +11,7 @@ on:
     paths:
       - 'infra/dev/**'
     branches:
-      - develop
+      - main
 
 env:
   AWS_DEFAULT_REGION: us-east-1
