@@ -61,7 +61,7 @@ jobs:
     - name: Terraform Init
       run: |
         cd infra/dev
-        terraform init -backend-config="mc-test-dev-terraform-state" \
+        terraform init -backend-config="bucket=mc-test-dev-terraform-state" \
                       -backend-config="region=us-east-1" \
                       -backend-config="dynamodb_table=mc-te-dev-tf-statelock" \
                       -backend-config="key=mc-test-dev-terraform.tfstate"
